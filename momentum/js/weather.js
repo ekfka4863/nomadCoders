@@ -25,21 +25,22 @@ function onGeoOk(position) {
     .then(data => {
       const weather = document.querySelector("#weather span:first-child");
       const city = document.querySelector("#weather span:last-child");
-
+      
       // console.log(data.name, data.weather[0].main);
       // const nameVal = data.name;
       // const weatherVal = data.weather[0].main;
-      city.innerText = data.name;
-      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp} ℃`;
+      city.innerText = `/ ${data.name}`;
     });
 }
+
 
 function onGeoError() {
   alert("Can't find you. No weather for you.");
 }
 
 
-// geolocation API
+// geolocation API ================================================
 // cf.  https://openweathermap.org/current
 // 원본: 
 // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
@@ -53,3 +54,4 @@ function onGeoError() {
 // getCurrentPosition()은 2가지의 인자를 받는다 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 
+// ===============================================================

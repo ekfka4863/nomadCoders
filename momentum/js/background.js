@@ -17,6 +17,7 @@ let randomImg = images[Math.floor(Math.random() * imgLen)];
 // console.log(randomImg);
 
 // image for background image 
+const wrap = document.querySelector("#wrap");
 const bgImageWrapper = document.createElement("div");
 const bgImage = document.createElement("img");
 // bgImage.setAttribute("src", "./img/" + randomImg);
@@ -30,7 +31,7 @@ bgImage.setAttribute("id", "bgImage")
 // 생성된 img 태그 추가하기 
 // document.body.appendChild(bgImage);
 // document.body.append(bgImage);
-document.body.append(bgImageWrapper);
+wrap.append(bgImageWrapper);
 bgImageWrapper.append(bgImage);
 // document.body.prepend(bgImage);
 

@@ -1,8 +1,7 @@
 // app_2.js
 
-// app_3.js
 
-// DOM 
+// DOM =====================================================
 const nameSection = document.querySelector("#nameSection");
 const todoListSection = document.querySelector("#todoListSection");
 const timeQuoteWeatherSection = document.querySelector("#timeQuoteWeatherSection");
@@ -13,50 +12,40 @@ const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
 
-// function 
+// function ================================================
 // onLoginSubmit
-// function onLoginSubmit(e) {
-//   e.preventDefault();  
-//   const usernameThatTheUserWrote = loginInput.value; 
-//   console.log(usernameThatTheUserWrote);
-//   localStorage.setItem(USERNAME_KEY, usernameThatTheUserWrote);
-//   paintGreetings(usernameThatTheUserWrote);
+function onLoginSubmit(e) {
+  e.preventDefault();  
+  const usernameThatTheUserWrote = loginInput.value; 
+  console.log(usernameThatTheUserWrote);
+  localStorage.setItem(USERNAME_KEY, usernameThatTheUserWrote);
+  paintGreetings(usernameThatTheUserWrote);
 
-//   nameSection.classList.add(HIDDEN_CLASSNAME);
-//   todoListSection.classList.remove(HIDDEN_CLASSNAME);
-//   timeQuoteWeatherSection.classList.remove(HIDDEN_CLASSNAME);
-// }
+  nameSection.classList.add(HIDDEN_CLASSNAME);
+  todoListSection.classList.remove(HIDDEN_CLASSNAME);
+  timeQuoteWeatherSection.classList.remove(HIDDEN_CLASSNAME);
+}
 
 // paintGreetings
-// function paintGreetings(username) {
-//   greeting.innerText = `Hello ${username}!`;
-//   // greeting.classList.remove(HIDDEN_CLASSNAME);
-// }
+function paintGreetings(username) {
+  greeting.innerText = `Hello ${username}!`;
+  // greeting.classList.remove(HIDDEN_CLASSNAME);
+}
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-// function testFn() {
-//   if (savedUsername === null) {
-  
-//     (function(e) {
-//       e.preventDefault();  
-//       const usernameThatTheUserWrote = loginInput.value; 
-//       console.log(usernameThatTheUserWrote);
-//       localStorage.setItem(USERNAME_KEY, usernameThatTheUserWrote);
-//       paintGreetings(usernameThatTheUserWrote);
-    
-//       nameSection.classList.add(HIDDEN_CLASSNAME);
-//       todoListSection.classList.remove(HIDDEN_CLASSNAME);
-//       timeQuoteWeatherSection.classList.remove(HIDDEN_CLASSNAME);
-//     })();
-  
-//   } else {
-//     (function(username) {
-//       greeting.innerText = `Hello ${username}!`;
-//     })();
-//   }
-// }
 
+
+
+// event =================================================
+// 여기부터
+// window.addEventListener("load", function(e) {
+//   if (usernameThatTheUserWrote === null) {
+
+//   } else {
+
+//   }
+// });
 
 loginForm.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -76,3 +65,8 @@ loginForm.addEventListener("submit", function(e) {
   }
 
 });
+
+
+
+
+// ==========================================================
