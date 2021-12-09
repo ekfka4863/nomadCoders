@@ -1,6 +1,6 @@
 // clock.js
 
-const clock = document.querySelector("h2#clock");
+const clock = document.querySelector("div#clock");
 
 
 function getClock() {

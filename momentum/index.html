@@ -5,25 +5,70 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Momentum</title>
+  <title>My Momentum</title>
 </head>
-<body>
-  <!-- <h1 id="title" class="title_class_name">Grab me!</h1> -->
-  <!-- <h1 class="hello">Grab me!</h1>
-  <h1 class="hello">Grab me!</h1>
-  <h1 class="hello">Grab me!</h1>
-  <h1 class="hello">Grab me!</h1>
-  <h1 class="hello">Grab me!</h1> -->
 
-  <div class="hello">
-    <h1 class="sexy-font">Grab me 1!</h1>
-  </div>
-  <!-- <div class="hello">
-    <h1>Grab me 2!</h1>
-  </div>
-  <div class="hello">
-    <h1>Grab me 3!</h1>
-  </div> -->
-  <script src="./js/app.js"></script>
+<body>
+  <!-- layout -->
+  <div id="wrap">
+    <h1 class="blind">welcome to my momentum</h1>
+
+    <!-- name section -->
+    <section id="nameSection">
+      <form action="#" id="loginForm">
+        <h2 class="blind">log in section</h2>
+        <label for="userName"><span class="blind">write your name please</span></label>
+        <input type="text" id="userName" name="user__Name" value="" placeholder="your name" required maxlength="15" />
+        <label for="userLogIn"><span class="blind"> log in button. your name will be saved in the momentum application, when you click the log in button</span></label>
+        <input type="submit" id="userLogIn" name="user__LogIn" value="log in" />
+      </form>
+    </section>
+  
+    <!-- todo list section -->
+    <section id="todoListSection" class="hidden">
+      <h2>todo list</h2>
+      <form id="todoForm">
+        <label for="userTodos"><span class="blind">make a list of things to do</span></label>
+        <input type="text" id="userTodos" name="user__Todos" value="" placeholder="Write a To Do and Press Enter" required />
+      </form>
+      <ul id="todoList">
+        <!-- li tags will be created "dynamically" later using js... -->
+      </ul>
+    </section>
+  
+    <!-- time and quote section -->
+    <section id="timeQuoteWeatherSection" class="hidden">
+      <h2 class="blind">
+        greeting user, 
+        let user know what time is it now, 
+        a good quote, 
+        and today's weather
+      </h2>
+
+      <div id="greeting"></div><!--// #greeting -->
+
+      <div id="clock">00:00</div><!--// #clock -->
+
+      <div id="quote">
+        <span></span>
+        <span></span>
+      </div><!--// #quote -->
+
+      <div id="weather">
+        <span></span>
+        <span></span>
+      </div><!--// #weather -->
+
+    </section><!--// #timeQuoteWeatherSection -->
+  </div><!--// #wrap -->
+
+  <!-- script -->
+  <!-- <script src="./js/app.js"></script> -->
+  <script src="./js/app_2.js"></script>
+  <script src="./js/clock.js"></script>
+  <script src="./js/quotes.js"></script>
+  <script src="./js/background.js"></script>
+  <script src="./js/todo.js"></script>
+  <script src="./js/weather.js"></script>
 </body>
 </html>

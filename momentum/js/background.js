@@ -17,16 +17,21 @@ let randomImg = images[Math.floor(Math.random() * imgLen)];
 // console.log(randomImg);
 
 // image for background image 
+const bgImageWrapper = document.createElement("div");
 const bgImage = document.createElement("img");
 // bgImage.setAttribute("src", "./img/" + randomImg);
 bgImage.src = `../img/${randomImg}`;
 // bgImage.setAttribute("alt", randomImg + "이라는 이름의 랜덤 이미지 입니다");
 bgImage.alt = `${randomImg}라는 이름의 랜덤 이미지 입니다.`;
 // console.log(bgImage);
+bgImageWrapper.setAttribute("id", "bgImageWrapper")
+bgImage.setAttribute("id", "bgImage")
 
 // 생성된 img 태그 추가하기 
 // document.body.appendChild(bgImage);
-document.body.append(bgImage);
+// document.body.append(bgImage);
+document.body.append(bgImageWrapper);
+bgImageWrapper.append(bgImage);
 // document.body.prepend(bgImage);
 
 
