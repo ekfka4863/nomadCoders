@@ -15,11 +15,25 @@
 
   <!-- script -->
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <!-- https://unpkg.com/react@17.0.2/umd/react.production.min.js -->
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <!-- https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js -->
+  <!-- 
+    React JS는 interactivity의 원동력이고, 
+    React DOM은 React element를 가져다가 HTML 로 바꾸는 역할을 한다.
+  -->
+
   <script>
     const root = document.querySelector("#root");
     // // const span = React.createElement("span"); // 첫번째 인자는 태그/요소
-    const span = React.createElement("span", {id: "sexy-span", style: {color: "red", backgroundColor: "#eee"}}, "Hello! I'm a span : )"); // React.createElement()의 두번쨰 인자로는 Proprty에 대해 넣을 수 있다. 그리고 안에 넣은 content는 세번쨰 인자로 들어간다.
+    // const span = React.createElement("span", {id: "sexy-span", style: {color: "red", backgroundColor: "#eee"}}, "Hello! I'm a span : )"); // React.createElement()의 두번쨰 인자로는 Proprty에 대해 넣을 수 있다. 그리고 안에 넣은 content는 세번쨰 인자로 들어간다.
+    const h3 = React.createElement(
+      "h3", 
+      {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter"),
+      }, 
+      "Hello! I'm a heading number 3"); // React.createElement()의 두번쨰 인자로는 Proprty에 대해 넣을 수 있다. 그리고 안에 넣은 content는 세번쨰 인자로 들어간다.
     // // 이거는 근데 어려운 방법! 이렇게 할일이 앞으로는 없을 것!! 어려운거/문제점을 인지한 뒤 쉬운 것으로 넘어갈 것! 
     
     // ReactDOM.render(span, root);     // 어떤 요소를, 어디에다가 render할 것인지 명시
@@ -31,13 +45,16 @@
       {
       // property 주기 
       onClick: () => console.log("I'm clicked!"),
+      style: {
+        backgroundColor: "tomato", 
+      }
       }, 
       "Click me!"
     );  // 두번쨰 인자 property자리는 null로 비워두기 
     // ReactDOM.render(btn, root);
 
     // 여기서 잠깐!! 만약 span이랑 btn을 둘다 render 하고 싶으면 ... 
-    const container = React.createElement("div", null, [span, btn]);
+    const container = React.createElement("div", null, [h3, btn]);
     ReactDOM.render(container, root);
 
 
