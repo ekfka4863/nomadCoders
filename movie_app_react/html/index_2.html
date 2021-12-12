@@ -22,32 +22,49 @@
   <!-- 
     React JS는 interactivity의 원동력이고, 
     React DOM은 React element를 가져다가 HTML 로 바꾸는 역할을 한다.
+
+    https://medium.com/programming-sage/react-vs-react-dom-a0ed3aea9745
   -->
 
   <script> 
     const root = document.querySelector("#root");
-    // JSX
-    const Title = () => (
-      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-        Hello I'm a title!
-      </h3>
-    );
+
+    // 함수화 
+    // 1) function Arrow ( ) { return }
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={ () => {console.log("mouse enter")}}>
+          Hello I'm a title
+        </h3>
+      ); 
+    }
+    
+    // 함수화 
+    // 2) const Arrow = () => {}
     const Button = () => (
-      <button onClick={() => console.log("I'm clicked!")} style={{
-        type: "button",
-        backgroundColor: "tomato"
-      }}>
-        Click me!
+      <button 
+        onClick={() => console.log("I'm clicked!")} 
+        style={
+          {
+            type: "button",
+            backgroundColor: "tomato"
+          }
+        }
+      >
+        Click me
       </button>
     ); 
+
+    // JSX
     // const Container = React.createElement("div", null, [Title, Button]);
-    const Container = (
+    const Container = () => (
       <div>
-        Title Button
+        <Title /> 
+        <Button />
       </div>
     );
-    ReactDOM.render(Container, root);
 
+    ReactDOM.render(<Container />, root);
 
   </script>
 </html>
