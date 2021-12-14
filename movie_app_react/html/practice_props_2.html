@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unit converter</title>
+  </head>
+  <body>
+    <!-- layout -->
+    <div id="root"></div>
+    
+  </body>
+
+
+
+  <!-- script -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // props가 필요한 이유 -> props로 해결이 가능한 문제들을 이해하면 알게될 것!!
+
+    // // (함수형) 컴포넌트 만들기 -> 이떄, "컴포넌트"란 단지 어떤 JSX를 반환하는 함수라고 이해하면 쉽다
+    // function SaveBtn() {
+    //   return (
+    //   <button 
+    //     type="button" 
+    //     style={{  
+    //       backgroundColor: "tomato",
+    //       color: "white",
+    //       padding: "10px 20px",
+    //       border: 0,
+    //       borderRadius: 10
+    //     }}
+    //   >
+    //     save changes
+    //   </button>);
+    // }
+    // function ConfirmBtn() {
+    //   return (
+    //     <button 
+    //     type="button" 
+    //     style={{  
+    //       backgroundColor: "tomato",
+    //       color: "white",
+    //       padding: "10px 20px",
+    //       border: 0,
+    //       borderRadius: 10
+    //     }}
+    //   >
+    //     confirm
+    //   </button>
+    //   );
+    // }
+    // // 그래서 문제점! 버튼 각각에 똑같은 스타일을 적용하려면 중복되는 코드가 많아진다!!! 
+
+    // solution: 
+    /* 컴포넌트가 props 파라미터를 입력받으면 ...  
+    props (cf. properties의 줄임말)는 컴포넌트의 입력한 속성을 모두 포함하는 객체형태로 전달되는데,
+    console.log(props);  해보면 e.g. {banana: 'Save Changes', lemon: '상콤'} -> 이런식으로 하나의 객체가 반환되는 것을 확인할 수 있다.
+    그래서 그 안에 있는 값을 활용하고 싶으면 props.lemon 이런식으로 사용하면 된다.
+    reference:  https://xiubindev.tistory.com/95
+    */
+    // 컴포넌트에 props를 받으면  
+    // function Btn (props){
+    //   console.log(props);
+
+    //   return (
+    //     <button 
+    //       type="button"
+    //       style={{
+    //         backgroundColor: "tomato",
+    //         color: "white",
+    //         padding: "10px 20px",
+    //         border: 0,
+    //         borderRadius: 10,
+    //       }}
+    //     >
+    //     {props.banana}
+    //     </button>
+    //   );
+    // }
+
+    // 근데 props를 사용하기보단 디스트럭처링 할당을 더 잘 사용한다 
+    function Btn ({banana, onClick}){ 
+
+      // 또다른 문제점!! 
+      console.log(banana, "was rendered!");
+      // 여기서 콘솔창에 찍히는 걸 보면 ... 
+      /*
+      처음에는 ... 
+      Save Changes was rendered!
+      Continue was rendered! 라고 찍히지만...
+      
+      버튼을 클릭해서 banana가 바뀐 이후에는... 
+      Revert Changes was rendered!
+      Continue was rendered! 라고 찍힌다. 
+      즉, 여기서의 문제점은 바뀐 부분만 리렌더링 되는 것이 아니라 전체 컴포넌트가 리렌더링 된다는 의미다. 
+      그래서 이때 사용하는 것이 React.memo(rize)이다... 
+
+      이에 대해 알아보자! 
+      */
+
+      return (
+        <button 
+          type="button"
+          style={ {
+            backgroundColor: "tomato", 
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            // fontSize: (tOrF ? 18  : 16),
+          }}
+          onClick={onClick}
+        >
+        {banana}
+        </button>
+      );
+    }
+
+    // React.memo() 사용법
+    const MemorizeBtn = React.memo(Btn);   // 이렇게하고 아래에서 <Btn /> 대신 <MemorizeBtn />로 바꿔주면 변화한 부분만 다시 렌더링되는 것을 (콘솔 창에서) 확인할 수 있다!
+    
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => {
+        setValue("Revert Changes");
+      };
+        
+      return (
+        <>
+          <MemorizeBtn banana={value} lemon="상콤" tOrF={true} onClick={changeValue} />
+          <MemorizeBtn banana="Continue" melon="달달" />
+        </>
+      );
+    }
+
+    const root = document.querySelector("#root");
+    ReactDOM.render(<App />, root);
+
+  </script>
+</html>
+
+
