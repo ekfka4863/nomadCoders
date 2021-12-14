@@ -27,11 +27,12 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function App () {
+    function MinutesToHours () {
+  
       // const [minutes, setMinutes] = React.useState(0);
       const [amount, setAmount] = React.useState(0);
       // const [] = useState(false);
-      const [flipped, setFlipped] = React.useState(false);
+      const [inverted, setInverted] = React.useState(false);
 
       const onChange = (event) => {
         // console.log(event);
@@ -42,25 +43,26 @@
       const reset = () => {
         setAmount(0);
       };
-      const onFlip = () => {
+      const onInvert = () => {
         reset();
-        // setFlipped(!flipped);
-        setFlipped((current) => !current);
+        // Flipped(!flipped);
+        setInverted((current) => !current);
       };
 
       return (
         <div>
+          <h1 className="h1">super converter</h1>
+
           <div>
-            <h1 className="h1">super convert er</h1>
             <label htmlFor="minutes">minutes</label>
             <input
               id="minutes"
-              value={flipped ? amount * 60: amount}
+              value={inverted ? amount * 60: amount}
               type="number"
               placeholder="minutes"
               onChange={onChange}      // onChange 이벤트 -> 이벤트로 내용 변경 감지하는 함수
-              // disabled={flipped === true}   // 해석: flipped가 false이면 disabled 되고, !== 면 disabled가 아니게 될 것!
-              disabled={flipped}      // 응용: 현재 flipped의 기본 값은 false이기 때문에, disabled={false}니까 disabled되지 않는다.  
+              // disabled={inverted === true}   // 해석: inverted가 false이면 disabled 되고, !== 면 disabled가 아니게 될 것!
+              disabled={inverted}      // 응용: 현재 inverted의 기본 값은 false이기 때문에, disabled={false}니까 disabled되지 않는다.  
             />
           </div>
 
@@ -68,24 +70,24 @@
             <label htmlFor="hours">hours</label>
             <input
               id="hours" 
-              value={flipped ? amount : Math.round(amount / 60)}
+              value={inverted ? amount : Math.round(amount / 60)}
               type="number"
               placeholder="hours"
               onChange={onChange}
-              // disabled={flipped === false}   // 해석: flipped가 false이면 disabled 되고, !== 면 disabled가 아니게 될 것!
-              disabled={!flipped}      // 응용:  disabled={true}가 되면 disabled가 된다.  
+              // disabled={inverted === false}   // 해석: inverted가 false이면 disabled 되고, !== 면 disabled가 아니게 될 것!
+              disabled={!inverted}      // 응용:  disabled={true}가 되면 disabled가 된다.  
             />
           </div>
           <div>
             <button onClick={reset} type="button">reset</button>
-            <button onClick={onFlip} type="button">flip</button>
+            <button onClick={onInvert} type="button">{inverted ? "Turn Back" : "Invert"}</button>
           </div>
         </div>
       );
     }
     
     const root = document.querySelector("#root");
-    ReactDOM.render(<App />, root);
+    ReactDOM.render(<MinutesToHours />, root);
 
   </script>
 </html>
