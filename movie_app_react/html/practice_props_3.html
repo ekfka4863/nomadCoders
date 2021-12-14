@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unit converter</title>
+  </head>
+  <body>
+    <!-- layout -->
+    <div id="root"></div>
+    
+  </body>
+
+
+
+  <!-- script -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <!-- <script src="https://unpkg.com/react@17.0.2/umd/react.development.min.js"></script> -->
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <!-- <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.min.js"></script> -->
+  
+  <!-- prop type -->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // prop types 
+
+    function Btn({text, fontSize = 12}){    // cf. 자바스크립트 -> 기본값 설정  
+
+      return (
+        <button 
+          type="button"
+          style={ {
+            backgroundColor: "tomato", 
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            // fontSize: fontSize,
+            fontSize
+          }}
+        >
+        {text}
+        </button>
+      );
+    }
+
+    
+    // ============= //
+    // 문제점 발생!! 
+    // 이럴때, 만약 원래 들어가야 하는 prop에 잘못된 정보가 들어가면 어떻게 할까?? 
+    // 이럴때를 위해 알아야하는 개념은 prop type이다.   
+    // 최소한의 에러를 발생할 수 있게, type checking을 할 수 있게 해준다.
+
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+
+      // reference:  https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+    };
+    
+    
+    function App() {
+
+      return (
+        <>
+          <Btn text="Save Changes" fontSize={18} />
+          <Btn text={14} fontSize={"Continue"} />
+        </>
+      );
+    }
+
+    const root = document.querySelector("#root");
+    ReactDOM.render(<App />, root);
+
+  </script>
+</html>
+
+
