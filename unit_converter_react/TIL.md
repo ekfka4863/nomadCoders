@@ -58,3 +58,29 @@ https://www.daleseo.com/react-hooks-use-state/ -->
 - 해당 명령어로는 `development server(개발용 서버)`를 만들 수 있고, 자동으로 브라우저를 열것이다.       
 
 
+---
+
+## useEffect
+> 언제 사용? 
+- React.js는 새로운 정보를 자동적으로 refresh 해준 다는 점에서 편리하다.       
+하지만, 때로는 이러한 기능이 불필요할 때가 있다.
+- ~~그래서~~ 컴포넌트에서 상태 변화가 있을때마다 모두 리렌더링 되는 것이 아니라, 
+최초에 처음 render 될 때만 코드가 실행되길 원하고 다른 state 변화에는 실행되지 않도록 하고 싶을 때 사용하는 아이가 바로 useEffect다.        
+~~그러고 싶을 때가 언제냐면 ...       
+e.g. API를 통해 데이터를 가져올 때 처음 렌더링 할 떄는 API를 가져온다. 그리고는 상태 변화가 있을때 그 API를 또 가져오고 싶지는 않을 것이다.~~
+
+
+> 사용 방법 
+- useEffect는 두개의 argument를 갖는 함수다.      
+첫 번째 argument는 실행시키고자 하는 함수이고,       
+두 번째 argument로는 ... 배열 []이 오는데, 배열 안에 React.js가 이벤트를 watch/지켜보게끔 하는 dependency를 넣어줄 수 있다.     
+그래서 useEffect의 첫번째 argument로 들어간 코드가 어떤 dependencies에 변화/이벤트가 있을 때 해당 코드를 실행하고 싶은 건지 지정할 수 있다.      
+<!-- https://yohanpro.com/posts/react/use-effect -->
+
+<!-- https://velog.io/@mnz/React-useEffect-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0 -->
+
+
++ 그러면 .... 
+만약...
+코드의 특정한 부분만 변화했다고 하면, 원하는 코드들을(/만) 실행할 수 있는 방법은 무엇일까? 
+--> 
