@@ -99,5 +99,22 @@ e.g. API를 통해 데이터를 가져올 때 처음 렌더링 할 떄는 API를
 
 
 
+---
 
-
+> styled component
+- 기존에 react js 에서 스타일을 입히는 방법은 약 3가지: 
+  - 1. 인라인으로 자바스크립트 코드를 직접 입력하는 방법 
+  - 2. global 하게 모든 파일에 `styles.css` 파일을 적용 시키는 방법 
+  - 3. `___.module.css` 파일을 만드는 방법 
+- 위에 제시된 각각의 방식은 단점이 있었다: 
+  - 1. 자바스크립트 코드로 스타일을 작성해야 한다       
+    (e.g. <div style={{backgroundColor}}></div>)
+  - 2. global하게 모든 곳에 적용되는 스타일링이다 
+  - 3. `import styles from "./___.module.css"`를 스타일링이 적용되는 파일에 가서 해줘야만 하는 번거로움과        
+    스타일링을 적용할 태그마다 e.g. <div className={styles.모듈css파일에적힌클래스명}></div> 식으로 `className`을 반드시 적어줘야 한다는 번거로움이 있다.      
+- 그래서 ... `styled-components` 라이브러리를 사용하는 이유? 
+  - 위에서 제시된 단점 보완 가능 
+  - 및 기타 장점들이 있음 
+  <!-- https://analogcoding.tistory.com/181
+  https://kyounghwan01.github.io/blog/React/styled-components/
+  https://gold-dragon.tistory.com/228 -->
