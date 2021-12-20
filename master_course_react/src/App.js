@@ -103,69 +103,105 @@
 // ===============================\
 // #2.4. 강의부터 ... 
 // 우리가 styled-components 에서 "애니메이션"을 사용하고 싶으면 keyfra
-import styled, { keyframes } from "styled-components";
+// import styled, { keyframes } from "styled-components";
 
-// animation 만들기 
-const rotateAnimation = keyframes`
-  0% {
-    transform: rotate(0deg);
-    border-radius: 0px;
-  } 
-  50% {
-    transform: rotate(360deg);
-    border-radius: 100px;
-  }
-  100% {
-    transform: rotate(0deg);
-    border-radius:  0px;
-  }
+// // animation 만들기 
+// const rotateAnimation = keyframes`
+//   0% {
+//     transform: rotate(0deg);
+//     border-radius: 0px;
+//   } 
+//   50% {
+//     transform: rotate(360deg);
+//     border-radius: 100px;
+//   }
+//   100% {
+//     transform: rotate(0deg);
+//     border-radius:  0px;
+//   }
+// `;
+
+// const Wrapper = styled.div`
+//   display: flex;
+//   width: 100vw;
+//   height: 100vh;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: ${(props) => props.theme.backgroundColor};
+// `;
+
+// const Emoji = styled.span`
+//   font-size: 30px;
+// `;
+
+
+// const Box = styled.div`
+//   height:200px;
+//   width: 200px;
+//   background-color: ${(props) => props.bgColor || "tomato"};
+//   /* background-color: tomato; */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   animation: ${rotateAnimation} 3s linear infinite;
+
+//   ${Emoji} {
+//     &:hover {
+//       font-size: 98px;
+//     }
+//     &:active {
+//       opacity: 0;
+//     }
+//   }
+// `;
+
+// const Title = styled.h1`
+//   padding: 0px 100px;
+//   color: ${(props) => props.theme.textColor};
+// `;
+
+// function App() {
+//   return (
+//     <Wrapper>
+//       <Box>
+//       <Emoji as="p">😋</Emoji>
+//       </Box>
+//       {/* <Emoji>🧐</Emoji> */}
+//       {/* <p>이 이모지는 Box 컴포넌트 안에 위치하지 않았기 때문에 아무런 스타일링이 적용되지 않는다</p> */}
+//       <Title>Hello</Title>
+//       <Box bgColor="teal">
+//       <Emoji as="a">😋</Emoji>
+//       </Box>
+//     </Wrapper>
+//   );
+// }
+
+// export default App;
+
+
+// ===============================\
+// #2.7. 강의부터 ... 
+import styled from "styled-components";
+
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
 `;
 
 const Wrapper = styled.div`
   display: flex;
-`;
-
-const Emoji = styled.span`
-  font-size: 30px;
-`;
-
-
-const Box = styled.div`
-  height:200px;
-  width: 200px;
-  background-color: ${(props) => props.bgColor || "tomato"};
-  /* background-color: tomato; */
-  display: flex;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
   align-items: center;
-  animation: ${rotateAnimation} 3s linear infinite;
-
-  ${Emoji} {
-    &:hover {
-      font-size: 98px;
-    }
-    &:active {
-      opacity: 0;
-    }
-  }
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
-
 
 function App() {
   return (
     <Wrapper>
-      <Box>
-      <Emoji as="p">😋</Emoji>
-      </Box>
-      <Emoji>🧐</Emoji>
-      <p>이 이모지는 Box 컴포넌트 안에 위치하지 않았기 때문에 아무런 스타일링이 적용되지 않는다</p>
-      <Box bgColor="teal">
-      <Emoji as="a">😋</Emoji>
-      </Box>
+      <Title>Hello</Title>
     </Wrapper>
   );
 }
 
 export default App;
-
-
