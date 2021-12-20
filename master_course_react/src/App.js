@@ -43,8 +43,28 @@ const Text = styled.h1`
 const Circle = styled(Box)`
   border-radius: 50px;
 `;
-// 이렇게 Box가 갖고있는 모든 속성을 가져오지만, 동시에 다른 코드를 추가할 수 있게 환다!
+// 이렇게 Box가 갖고있는 모든 속성을 가져오지만, 동시에 다른 코드를 추가할 수 있게 한다!
 
+// const Btn = styled.button`
+//   color: white;
+//   background-color: tomato;
+//   border: 0;
+//   border-radius: 15px;
+// `;
+// 이때, 만약 버튼 태그가 아니고, 다른 태그를 사용해야 하는 경우라면 ...? 
+const Btn = styled.button`
+  color: white;
+  background-color: tomato;
+  border: 0;
+  border-radius: 15px;
+`;
+// 여기서는 똑같이 button 태그를 사용하고... 아래에서 props로 as="" 를 사용한다.
+// e.g. <Btn as="a">Log out</Btn> --> 브라우저는 button 태그 대신 a 태그로 해당 컴포넌트를 렌더링 해준다
+
+// styled-components로 attribute 설정하는 방법
+const Input = styled.input.attrs({required: true})`
+  background-color: tomato;
+`;
 
 function App() {
   // return null;
@@ -57,13 +77,22 @@ function App() {
 
     // 방법2: styled-components 들을 사용하면 ... 
     <Father>
-      <Box bgColor="teal">
+      {/* <Box bgColor="teal">
         <Text>Hello</Text>
       </Box>
       <Box bgColor="tomato">
         <Text>Bye</Text>
       </Box>
-      <Circle bgColor="violet" />
+      <Circle bgColor="violet" /> */}
+
+      {/* <Btn>Log in</Btn>
+      <Btn as="a" href="/" >Log out</Btn> */}
+
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
     </Father>
   );
 }
