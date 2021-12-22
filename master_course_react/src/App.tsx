@@ -181,27 +181,46 @@
 
 // ===============================\
 // #2.7. 강의부터 ... 
-import styled from "styled-components";
+// import styled from "styled-components";
 
-const Title = styled.h1`
-  color: ${(props) => props.theme.textColor};
-`;
+// const Title = styled.h1`
+//   color: ${(props) => props.theme.textColor};
+// `;
 
-const Wrapper = styled.div`
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
+// const Wrapper = styled.div`
+//   display: flex;
+//   height: 100vh;
+//   width: 100vw;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: ${(props) => props.theme.backgroundColor};
+// `;
 
-function App() {
+// function App() {
+//   return (
+//     <Wrapper>
+//       <Title>Hello</Title>
+//     </Wrapper>
+//   );
+// }
+
+// export default App;
+
+
+
+// ===============================\
+// #3.2. 강의부터 ... 
+
+import Circle from "./Circle";
+
+function App () {
   return (
-    <Wrapper>
-      <Title>Hello</Title>
-    </Wrapper>
+    <div>
+      <Circle bgColor="teal" />
+      <Circle bgColor="tomato" />
+    </div>
   );
 }
 
 export default App;
+
