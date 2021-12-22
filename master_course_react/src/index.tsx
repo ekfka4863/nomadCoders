@@ -13,8 +13,8 @@ const lightTheme = {
   backgroundColor: "whitesmoke",
 };
 
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.render(  
+  <React.StrictMode> 
     <ThemeProvider theme={lightTheme}>
       <App />
     </ThemeProvider>
