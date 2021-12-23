@@ -1,5 +1,7 @@
 // import styled from "styled-components";
 
+import { useState } from "react";
+
 // const Father = styled.div`
 //   display: flex;
 // `;
@@ -174,7 +176,7 @@
 //       </Box>
 //     </Wrapper>
 //   );
-// }
+// } 
 
 // export default App;
 
@@ -211,16 +213,65 @@
 // ===============================\
 // #3.2. 강의부터 ... 
 
-import Circle from "./Circle";
+// // import Circle from "./Circle";
+
+// function App () {
+//   const [value, setValue] = useState("");   // username
+//   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+//     // 여기에서는 'any'라는 타입스크립트의 타입이 들어갈 수 있는데, any 라는 타입스크립트 타입은 '어떤 값도 허용한다는 의미'이다
+//     // 그리고 우리는 any라는 타입을 최대한 배제하려고 노력해야한다! 왜냐면 자바스크립트가 보통 이런 식으로 "동적 타입"으로 동작하는거지, 타입스크립트는 그런 용도가 아니니까! 
+
+//     // console.log(event.currentTarget.value);
+
+//     const { currentTarget: {value}, } = event;
+//     setValue(value);
+//   }; 
+//   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+//     event.preventDefault();
+//     console.log("hello", value);
+//   };
+
+//   return (
+//     <div>
+//       {/* <Circle bgColor="teal" borderColor="yellow" />
+//       <Circle bgColor="tomato" text="i'm here!" /> */}
+
+//       <form onSubmit={onSubmit}>
+//         <input 
+//           value={value} 
+//           onChange={onChange} 
+//           type="text" 
+//           placeholder="username" 
+//         />
+//         <button>Log in</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+// ===============================\
+// #3.6. 강의부터 ... 
+
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: ${(props) => props.theme.bgColor};
+`;
+const H1 = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
 
 function App () {
   return (
-    <div>
-      <Circle bgColor="teal" borderColor="yellow" />
-      <Circle bgColor="tomato" text="i'm here!" />
-    </div>
+    <Container>
+      <H1>protected</H1>
+    </Container>
   );
 }
 
 export default App;
+
 
