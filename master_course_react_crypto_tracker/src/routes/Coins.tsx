@@ -85,9 +85,22 @@ interface CoinInterface {
 // ];
 // cf.  https://api.coinpaprika.com/v1/coins
 
+// loading에 관련된 컴포넌트 만들기 ... loading이 true일때 보여지는 컴포넌트 
+const Loader = styled.div`
+  /* height: 50px; */
+  margin-top: 100px;
+  border-radius: 15px;
+  background-color: #eee;
+  color: ${(props) => props.theme.accentColor};
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+`;
 
 function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     // 즉시실행함수
     (async () => {
@@ -95,6 +108,7 @@ function Coins() {
       const json = await response.json();
       // console.log(json);              // 9000개가 넘음... 
       setCoins(json.slice(0, 100));      // TIP! 100개만 가져오기! 
+      // setLoading(false);
     })();
   }, []);
 
@@ -106,14 +120,16 @@ function Coins() {
         <Title>코인</Title>
       </Header>
       
-      <CoinList>
+      {/* <CoinList> */}
+      {/* {loading ? "Loading..." : <CoinList> */}
+      {loading ? <Loader>Loading...</Loader> : <CoinList>
         {/* <Coin></Coin> */}
         {coins.map((coin) => ( 
           <Coin key={coin.id}>
             <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
           </Coin>
         ))}
-      </CoinList>
+      </CoinList>}
     </Container>
   );
 }
