@@ -4,8 +4,8 @@ date: 2021-12-22-Wednesday ~ 2021-12--day
 
 # Typescript
 
-## Typescript이란?   
-- Typescript이란 Javascript를 기반으로 한 프로그래밍 언어다.    
+## Typescript란?   
+- Typescript란 Javascript를 기반으로 한 프로그래밍 언어다.    
 2012년 마이크로소프트사가 발표한 타입스크립트는 자바스크립트를 기반으로 정적 타입 문법이라는 기존의 자바스크립트에는 없던 새로운 문법을 추가한 프로그래밍 언어이다.         
 ~~그래서 자바스크립트를 거의 카피한 것인데, 다만 거기에다 새로운 기능만 살짝 추가한 언어라고 보면 된다.        
 즉, 문법이 모두 같다 apart from sth new!~~ 
@@ -138,50 +138,28 @@ e.g.
 <br />
 
 >> 타입스크립트의 기본 타입 중 자바스크립트에 존재하지 않는 타입 
-- **Tuple**:
-- **Enum**:
-- **Any**:
-- **Void**:
-- **Never**:
-
-<br />
-<br />
-<br />
-
-## 타입스크립트로 변환하는 방법 
-- `npx create-react-app` 명령어로 리액트 어플리케이션 프로젝트 폴더를 만들어 줄 때, 뒤에 `--template typescript`를 붙여서 해당 리액트 앱에 타입스크립트가 함께 구성되어 있게 해준다.        
-e.g.     
-  ```
-    $ npx create-react-app [어플리케이션 이름] --template typescript
-
-    // TIP! 위의 명령어 후에 styled-components를 사용할 거면 설치해주면 됨! -> $ npm i styled-components
-    // 만약 현재 이미 만들어져 있는 리액트 앱 폴더에 타입스크립트를 "추가"해주고 싶은 경우는 아래의 명령어를 terminal에 입력! 
-
-    $ npm install --save typescript @types/node @types/react @types/react-dom @types/jest
-  ```
-- 그리고 나서 타입스크립트의 파일 확장자는 더이상 `.js`가 아닌 `.ts`이다.    
-단, 타입스크립트를 리액트에서 사용할 때는 확장자를 `.tsx`로 사용한다.   
-- e.g.     
-  <img src="./img/typescript_file_format_tsx.png" alt="타입스크립트 파일 확장자 in react" width="200px" height="px" style="padding-left: 30px;" /> 
-- 여기서 잠깐!     
-만약 원래 `App.js` 또는 `index.js` 파일을 확장자 `.tsx`로 바꾸면 타입스크립트는 "complaining" 할 것이다. 왜냐면 styled-components가 뭐고 props가 뭐고, 타입스크립트는 그런 것들을 모두 일일히 알아야하는 아이이기 때문이다.     
-예를 들어, styled-components 같은 패키지를 타입스크립트가 뭔지 인지하지 못하는 이유는 패키지가 타입스크립트가 아닌 자바스크립트로 만들어졌기 때문이다. 
-- 그래서 위와 같이 타입스크립트로 만들어지지 않은 라이브러리를 import 할 때, 타입스크립트가 "complaining" 하지 못하게 하는 방법/solution:          
-  - `$ npm install @types/styled-components` 커맨드 실행 
-  - 설명:      
-  그러면 why this [@types](https://www.npmjs.com/package/@types/node) command so magical??      
-  우선, `@types`란 아주 큰 Github repository인데, 여기에는 모든 유명한 npm 라이브러리를 갖고 있다.    
-  그리고 여기서 (타입스크립트가 이해하지 못하는) 라이브러리나 패키지의 "type definition"을 사람들이 만들어서 올린 것이다.     
-  여기서 말하는 "**type definition**"이란...     
-  어떤 라이브러리나 패키지의 소스코드를 보고 타입스크립트가 이해할 수 있도록 타입스크립트에게 해 줄 설명을 만든 것을 뜻한다.       
-  그래서 e.g. 원래는 타입스크립트가 styled-components가 뭐하는 아인지 모르는데, 이 @types에 있는 type definition 을 깔아주면 타입스크립트에게 styled-components가 무엇인지 설명을 해줬기 때문에 이제 타입스크립트는 "투덜대지 않고 할일을 하게 되는 것"이라고 이해하면 쉽다.    
-
+- **Tuple**:     
+배열의 타입 순서와 배열 길이를 지정할 수 있는 타입.    
+- **Enum**:       
+Number 또는 String 값 집합에 고정된 이름을 부여할 수 있는 타입.    
+값의 종류가 일정한 범위로 정해져 있는 경우에 유용하다.     
+기본적으로 0부터 시작하며 값을 1씩 증가한다.    
+- **Any**:     
+모든 데이터를 허용
+- **Void**:      
+변수에는 undefined와 null 만 할당하고 함수에는 리턴 값을 설정할 수 없는 타입
+- **Never**:     
+특정 값이 절대 발생할 수 없을 때 사용
 
 <br />
 
-> 타입스크립트의 인터페이스     
-  - 타입스크립트에서 인터페이스틑 객체의 스펙(속성과 속성의 타입), 함수의 파라미터, 함수의 스펙(파라미터, 반환 타입 등), 배열과 객체를 접근하는 방식, 클랙스 등에서 "약속"을 정의할 수 있는 문법이다.     
-  - e.g.     
+> 타입스크립트에만 있는 문법/기능들 
+
+>> 인터페이스 
+- 인터페이스는 타입을 정의한 규칙을 의미한다 
+- ~~다시 ...~~         
+타입스크립트에서 인터페이스틑 객체의 스펙(속성과 속성의 타입), 함수의 파라미터, 함수의 스펙(파라미터, 반환 타입 등), 배열과 객체를 접근하는 방식, 클랙스 등에서 "약속"을 정의할 수 있는 문법이다.        
+  - e.g.        
   ```js 
     interface PlayerShape {
       name:string, 
@@ -195,13 +173,25 @@ e.g.
 
   <img src="./img/typescript_interface.png" alt="타입스크립트의 interface 문법" width="400px" height="px" style="padding-left: px;" />
 
-<!-- https://joshua1988.github.io/ts/guide/interfaces.html#%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4 -->
-  
+<!-- https://joshua1988.github.io/ts/guide/interfaces.html#%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4
+https://www.samsungsds.com/kr/insights/TypeScript.html -->
 
+  
+>> 오퍼레이터 
+
+>> 제네릭 
+
+>> 타입 추론 
+
+>> 타입 단언 
+
+>> 타입 호환 
+
+<!-- https://www.samsungsds.com/kr/insights/TypeScript.html -->
 
 <br />
 
-> Optional props 
+>> Optional props 
 - 방법 1:    
   ```js
     // e.g. 
@@ -220,7 +210,8 @@ e.g.
   ``` 
 
 <br />
-> 컴포넌트에 props 값이 없어도 적용될 기본값 지정하기  
+
+>> 컴포넌트에 props 값이 없어도 적용될 기본값 지정하기  
 - 타입스크립트 방법:        
 
   ```js
@@ -295,6 +286,94 @@ e.g.
 
     export default Circle;
   ``` 
+
+
+<!-- <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Untitled-102-300x216.png" alt="타입스크립트와 자바스크립트의 관계성" width="400px" height="px" style="padding-left: px;" /> -->
+
+
+
+<br />
+<br />
+<br />
+
+## 타입스크립트로 변환하는 방법 
+- `npx create-react-app` 명령어로 리액트 어플리케이션 프로젝트 폴더를 만들어 줄 때, 뒤에 `--template typescript`를 붙여서 해당 리액트 앱에 타입스크립트가 함께 구성되어 있게 해준다.        
+e.g.     
+  ```
+    $ npx create-react-app [어플리케이션 이름] --template typescript
+
+    // TIP! 위의 명령어 후에 styled-components를 사용할 거면 설치해주면 됨! -> $ npm i styled-components
+    // 만약 현재 이미 만들어져 있는 리액트 앱 폴더에 타입스크립트를 "추가"해주고 싶은 경우는 아래의 명령어를 terminal에 입력! 
+
+    $ npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+  ```
+- 그리고 나서 타입스크립트의 파일 확장자는 더이상 `.js`가 아닌 `.ts`이다.    
+단, 타입스크립트를 리액트에서 사용할 때는 확장자를 `.tsx`로 사용한다.   
+- e.g.     
+  <img src="./img/typescript_file_format_tsx.png" alt="타입스크립트 파일 확장자 in react" width="200px" height="px" style="padding-left: 30px;" /> 
+- 여기서 잠깐!     
+만약 원래 `App.js` 또는 `index.js` 파일을 확장자 `.tsx`로 바꾸면 타입스크립트는 "complaining" 할 것이다. 왜냐면 styled-components가 뭐고 props가 뭐고, 타입스크립트는 그런 것들을 모두 일일히 알아야하는 아이이기 때문이다.     
+예를 들어, styled-components 같은 패키지를 타입스크립트가 뭔지 인지하지 못하는 이유는 패키지가 타입스크립트가 아닌 자바스크립트로 만들어졌기 때문이다. 
+- 그래서 위와 같이 타입스크립트로 만들어지지 않은 라이브러리를 import 할 때, 타입스크립트가 "complaining" 하지 못하게 하는 방법/solution:          
+  - `$ npm install @types/styled-components` 커맨드 실행 
+  - 설명:      
+  그러면 why this [@types](https://www.npmjs.com/package/@types/node) command so magical??      
+  우선, `@types`란 아주 큰 Github repository인데, 여기에는 모든 유명한 npm 라이브러리를 갖고 있다.    
+  그리고 여기서 (타입스크립트가 이해하지 못하는) 라이브러리나 패키지의 "type definition"을 사람들이 만들어서 올린 것이다.     
+  여기서 말하는 "**type definition**"이란...     
+  어떤 라이브러리나 패키지의 소스코드를 보고 타입스크립트가 이해할 수 있도록 타입스크립트에게 해 줄 설명을 만든 것을 뜻한다.       
+  그래서 e.g. 원래는 타입스크립트가 styled-components가 뭐하는 아인지 모르는데, 이 @types에 있는 type definition 을 깔아주면 타입스크립트에게 styled-components가 무엇인지 설명을 해줬기 때문에 이제 타입스크립트는 "투덜대지 않고 할일을 하게 되는 것"이라고 이해하면 쉽다.    
+
+<br />
+
+> 타입스크립트랑 styled-components 테마를 연결하는 방법 (cf. 다크모드 & 라이트모드)
+- 만약 styled-components가 아예 설치가 안되어있으면 명령어 `$ npm install @types/styled-components`
+- 만약 styled-components가 설치가 완료되었으면, ~~create~~ a declarations file을 "보충"해 준다.     
+이때, 확장자는 e.g. `styled.d.ts` (declarations file)이다.    
+우리는 이미 이 파일을 다운로드 받은 상황이지만, 타입스크립트와 styled-components는 이미 갖고 있는 파일로도 ok.    
+하지만 우리는 이제 theme을 사용할 거니까 조금 더 "확장"할 필요가 있다.    
+그럼 이제 어떻게 declaration(cf. 선언) 파일을 만드는지 알아보자!     
+[참고 링크](https://styled-components.com/docs/api#typescript)     
+- steps:    
+  - 1. `src` 디렉토리로 가서 `styled.d.ts`라는 파일을 생성한다.      
+  이 파일을 일종의 우리가 이전에 설치해 놓은 파일을 override(덮어쓰기)할 것이다.    
+  - 2. [참고 링크](https://styled-components.com/docs/api#typescript)에 가서 아래 코드를 copy & paste한다.    
+
+  ```js
+    // import original module declarations
+    import 'styled-components';
+
+    // and extend them!
+    declare module 'styled-components' {
+      export interface DefaultTheme {
+        borderRadius: string;
+
+        colors: {
+          main: string;
+          secondary: string;
+        };
+      }
+    }
+  ```
+  - 3. 위의 `interface` 안에 들어가는 내용이 어떤 theme으로 보여질 것에 대한 내용인데, 우리가 원하는데로 수정한다.    
+    ```js
+    // import original module declarations
+    import 'styled-components';
+
+    // and extend them!
+    declare module 'styled-components' {
+      export interface DefaultTheme {
+        borderRadius: string;
+
+        colors: {
+          main: string;
+          secondary: string;
+        };
+      }
+    }
+  ```
+
+
 
 
 <!-- <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Untitled-102-300x216.png" alt="타입스크립트와 자바스크립트의 관계성" width="400px" height="px" style="padding-left: px;" /> -->
